@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<button onclick="mostrarAlertaExitoso()">Mostrar alerta exitoso</button>
+<button onclick="mostrarAlertaError()">Mostrar alerta de error</button>
+
+<div>Las alertas se mostrará acá</div>
+
+<div id="contenedor-alertas"></div>
+
+
+@section Scripts{
+    <script>
+        function mostrarAlertaExitoso(){
+            mostrarAlerta('Esto es un mensaje exitoso', 'success')
+        }
+
+        function mostrarAlertaError() {
+            mostrarAlerta('Esto es un mensaje de error', 'danger')
+        }
+
+        function mostrarAlerta(mensaje, tipo) {
+            const alerta = document.createElement("div");
+            alerta.innerHTML = `<div class="alert alert-${tipo}" role="alert">
+                                ${mensaje}
+                                </ div>`;
+            const contenedorAlertas = document.getElementById('contenedor-alertas');
+            contenedorAlertas.append(alerta);
+        }
+    </script>
+}
